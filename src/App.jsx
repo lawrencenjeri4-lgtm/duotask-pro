@@ -1,8 +1,35 @@
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Login from "./pages/Login";
+import Dashboard from "./pages/Dashboard";
+import ProtectedRoute from "./components/ProtectedRoute";
+import { useAuth } from "./context/AuthContext";
+
+function Home() {
+  const { user } = useAuth();
+
+  if (user) {
+    window.location.href = "/dashboard";
+    return null;
+  }
+
+  return <Login />;
+}
+
 export default function App() {
   return (
-    <div style={{ padding: "20px" }}>
-      <h1>🚀 DuoTask Pro</h1>
-      <p>Firebase Connected Successfully</p>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Home />} />
+
+        <Route
+          path="/dashboard"
+          element={
+            <ProtectedRoute>
+              <Dashboard />
+            </ProtectedRoute>
+          }
+        />
+      </Routes>
+    </BrowserRouter>
   );
 }
