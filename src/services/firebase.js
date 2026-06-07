@@ -3,7 +3,7 @@ import { getAuth } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyA-Gcxzjyc-WaJ2tViLcf1sb_5v1nUAgSk",
+  apiKey: "YOUR_API_KEY",
   authDomain: "duotask-pro.firebaseapp.com",
   projectId: "duotask-pro",
   storageBucket: "duotask-pro.firebasestorage.app",
