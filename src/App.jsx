@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Login from "./pages/Login";
 import Dashboard from "./pages/Dashboard";
 import ProtectedRoute from "./components/ProtectedRoute";
@@ -7,12 +7,7 @@ import { useAuth } from "./context/AuthContext";
 function Home() {
   const { user } = useAuth();
 
-  if (user) {
-    window.location.href = "/dashboard";
-    return null;
-  }
-
-  return <Login />;
+  return user ? <Navigate to="/dashboard" replace /> : <Login />;
 }
 
 export default function App() {
